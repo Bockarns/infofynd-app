@@ -1,0 +1,40 @@
+# Beroenden
+node_modules/
+*/node_modules/
+
+# Byggfiler och distribution
+dist/
+build/
+*/dist/
+*/build/
+
+# Miljövariabler och känslig data
+.env
+.env.local
+.env.*.local
+*.env
+
+# SQLite-databasfiler (lokala databaser ska inte till Git)
+*.sqlite
+*.sqlite3
+*.db
+server/data/
+server/*.sqlite
+
+# Loggar
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Editor & OS-filer
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Azure och temporära filer
+.azure/
+*.tmp
