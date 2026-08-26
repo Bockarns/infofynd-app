@@ -2,7 +2,10 @@
 
 ## Sammanfattning & Syfte
 
-InfoFynd är en fullstack-webbapplikation byggd i React och Express med SQLite som databas. Syftet med applikationen är att fungera som en samlingsplats för konsumenttips, erbjudanden och information, där besökare kan ta del av publicerat innehåll och ansöka om medlemskap.
+InfoFynd är en fullstack-webbapplikation byggd i React och Express med SQLite som databas. Syftet med applikationen är att fungera som en samlingsplats för konsumenttips, erbjudanden och information, där besökare kan ta del av delvist publicerat innehåll och ansöka om medlemskap för att få tillgång till fullständiga.
+
+Admin ska logga in och ha tillgång till CRUD operationer för medlemmar, nyheter, erbjudanden osv.
+SuperAdmin ska även ha CRUD över admins.
 
 Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarhantering, säker autentisering och god databashantering enligt kursens krav.
 
@@ -36,10 +39,10 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 ## Databas struktur
 
 - **Nyhet/erbjudande**
-  - kolumner: id, type("news" / "offer"), title, description, censoredDescription, imageUrl, discountCode, discountAmount, discountType, archived, createdAt
+  - kolumner: id, type("news" / "offer"), title, description, censoredDescription, imageUrl, discountCode, discountAmount, discountType, archived, createdAt, createdBy
 
 - **Medlemar**
-  - Kolumner: id, firstName, lastName, email, approveGDPR, gdprConsentAt, status("pending", "approved", "denied") , gdprRequest("none", "export", "delete"), createdAt
+  - Kolumner: id, firstName, lastName, email, approveGDPR, gdprConsentAt, status("pending", "approved", "denied") , gdprRequest("none", "export", "delete"), createdAt, approvedBy
 
 - **Admin**
   - Kolumner: id, firstName, lastName, password, email, superAdmin, suspendedAccount, createdAt
