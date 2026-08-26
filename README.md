@@ -18,10 +18,11 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 
 ### Administrationsdel (Skyddat läge)
 
-- **Inloggning:** Säker autentisering och "hashade lösenord" detta måste jag undersöka mer om.
+- **Inloggning:** Säker autentisering och "hashade lösenord" detta måste jag undersöka mer om. bcrypt och jwt(JsonWebTokens). (npm i bcrypt jsonwebtoken) i server mapp
 - **Hantera medlemsansökningar:** Gränssnitt för admin att granska, godkänna eller neka inkomna ansökningar.
 - **Hantera inlägg (CRUD):** Skapa, redigera, läsa och radera tips och erbjudanden.
 - **Skapande av inlägg** Vid skapande av inlägg ska ett meddelande gå ut som utskick med fullständig information/erbjudande gå ut till samtliga medlemmar.
+- **Medlemsinlogg** Om utskick inte går att få till utan att behöva någon premium package av något slag så är alternativ B en egen inloggning för medlemmar.
 
 ---
 
@@ -30,4 +31,15 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 - **Frontend:** React (Vite) med Tailwind CSS.
 - **Backend:** Node.js och Express (REST API).
 - **Databas:** SQLite (`better-sqlite3`).
-- **Säkerhet:** Lösenordshashning ska kolla upp vad som finns för alternativ kring detta.
+- **Säkerhet:** Lösenordshashning + auth ska kolla upp vad som finns för alternativ kring detta. bcrypt och jwt(JsonWebTokens)
+
+## Databas struktur
+
+- **Nyhet/erbjudande**
+  - kolumner: id, type("news" / "offer"), title, description, censoredDescription, imageUrl, discountCode, discountAmount, discountType, archived, createdAt
+
+- **Medlemar**
+  - Kolumner: id, firstName, lastName, email, approveGDPR, gdprConsentAt, status("pending", "approved", "denied") , gdprRequest("none", "export", "delete"), createdAt
+
+- **Admin**
+  - Kolumner: id, firstName, lastName, password, email, superAdmin, suspendedAccount, createdAt
