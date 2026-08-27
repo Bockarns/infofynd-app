@@ -9,6 +9,7 @@ export default function DarkModeToggle() {
 
   useEffect(() => {
     const root = document.documentElement;
+
     if (darkMode) {
       root.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -16,11 +17,26 @@ export default function DarkModeToggle() {
       root.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
-  }, [darkMode]);
 
+    let favicon = document.getElementById("favicon");
+
+    if (!favicon) {
+      favicon = document.createElement("link");
+      favicon.id = "favicon";
+      favicon.rel = "icon";
+      favicon.type = "image/svg+xml";
+      document.head.appendChild(favicon);
+    }
+
+    favicon.href = `${
+      darkMode
+        ? "/public/favicon/favicon-dark.svg"
+        : "/public/favicon/favicon-light.svg"
+    }?v=${darkMode ? "dark" : "light"}`;
+  }, [darkMode]);
   return (
     <button
-      onClick={() => setDarkMode(!darkMode)}
+      onClick={() => setDarkMode((prev) => !prev)}
       className="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
       aria-label="Växla mörkt/ljust läge"
     >
