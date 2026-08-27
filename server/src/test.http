@@ -19,7 +19,7 @@ Content-Type: application/json
   "title": "Ny hemsida lanserad",
   "description": "Vi har nu rullat ut vår helt nya webbplats med bättre prestanda och enklare navigering.",
   "censoredDescription": "Vi har nu rullat ut vår helt nya webbplats... Bli medlem för att läsa mer.",
-  "imageUrl": "/images/news-placeholder-light.webp"
+  "imageUrl": "/images/posts/placeholders/placeholder-light.webp"
 }
 
 ### 5. Skapa ett nytt Erbjudande med rabattkod (Triggar console.log med rabattdetaljer)
@@ -31,7 +31,7 @@ Content-Type: application/json
   "title": "25% på sommarmeny",
   "description": "Som medlem får du 25% rabatt på hela à la carte-menyn under hela helgen.",
   "censoredDescription": "Få 25% rabatt på à la carte-menyn. Bli medlem för att ta del av koden.",
-  "imageUrl": "/images/news-placeholder-light.webp",
+  "imageUrl": "/images/posts/placeholders/placeholder-light.webp",
   "discountCode": "SOMMAR25",
   "discountAmount": 25,
   "discountType": "percent"
@@ -46,7 +46,7 @@ Content-Type: application/json
   "title": "InfoFynd lanseras officiellt - Uppdaterad",
   "description": "Vi är glada att kunna presentera InfoFynd, plattformen där du hittar lokala nyheter och tips.",
   "censoredDescription": "Vi är glada att presentera InfoFynd... Logga in eller bli medlem.",
-  "imageUrl": "/images/launch-news.webp",
+  "imageUrl": "/images/posts/placeholders/placeholder-light.webp",
   "discountCode": null,
   "discountAmount": null,
   "discountType": null
