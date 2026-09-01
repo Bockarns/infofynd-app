@@ -29,9 +29,7 @@ export default function DarkModeToggle() {
     }
 
     favicon.href = `${
-      darkMode
-        ? "/public/favicon/favicon-dark.svg"
-        : "/public/favicon/favicon-light.svg"
+      darkMode ? "/favicon/favicon-dark.svg" : "/favicon/favicon-light.svg"
     }?v=${darkMode ? "dark" : "light"}`;
   }, [darkMode]);
   return (

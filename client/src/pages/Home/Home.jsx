@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <section>
       <Hero />
-
+      {/* TODO: Skulle vilja göra så antingen tex 4 st random aktiva nyheter/erbjudanden eller de senaste visas */}
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Aktuellt just nu</h2>
 

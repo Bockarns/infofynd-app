@@ -5,6 +5,20 @@ import DarkModeToggle from "./DarkModeToggle";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const linkClass = ({ isActive }) =>
+    `text-sm font-medium transition-colors ${
+      isActive
+        ? "text-emerald-600 dark:text-emerald-400 font-bold"
+        : "hover:text-emerald-600 dark:hover:text-emerald-400"
+    }`;
+
+  const mobileLinkClass = ({ isActive }) =>
+    `block text-sm font-medium py-2 transition-colors ${
+      isActive
+        ? "text-emerald-600 dark:text-emerald-400 font-bold pl-2 border-l-2 border-emerald-500"
+        : "hover:text-emerald-600 dark:hover:text-emerald-400"
+    }`;
+
   return (
     <header className="border-b border-slate-300 dark:border-slate-800 bg-blue-50/80 dark:bg-slate-800/80 backdrop-blur sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -18,28 +32,16 @@ export default function Navbar() {
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-4">
-          <NavLink
-            to="/"
-            className="text-sm font-medium hover:text-emerald-600"
-          >
+          <NavLink to="/" end className={linkClass}>
             Hem
           </NavLink>
-          <NavLink
-            to="/omoss"
-            className="text-sm font-medium hover:text-emerald-600"
-          >
+          <NavLink to="/omoss" className={linkClass}>
             Om oss
           </NavLink>
-          <NavLink
-            to="/arkiv"
-            className="text-sm font-medium hover:text-emerald-600"
-          >
+          <NavLink to="/arkiv" className={linkClass}>
             Arkiv
           </NavLink>
-          <NavLink
-            to="/nymedlem"
-            className="text-sm font-medium hover:text-emerald-600"
-          >
+          <NavLink to="/nymedlem" className={linkClass}>
             Registrera
           </NavLink>
           <DarkModeToggle />
@@ -84,33 +86,35 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
       {isOpen && (
         <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 space-y-3">
           <NavLink
             to="/"
+            end
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium py-2 hover:text-emerald-600"
+            className={mobileLinkClass}
           >
             Hem
           </NavLink>
           <NavLink
             to="/omoss"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium py-2 hover:text-emerald-600"
+            className={mobileLinkClass}
           >
             Om oss
           </NavLink>
           <NavLink
             to="/arkiv"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium py-2 hover:text-emerald-600"
+            className={mobileLinkClass}
           >
             Arkiv
           </NavLink>
           <NavLink
             to="/nymedlem"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium py-2 hover:text-emerald-600"
+            className={mobileLinkClass}
           >
             Registrera
           </NavLink>

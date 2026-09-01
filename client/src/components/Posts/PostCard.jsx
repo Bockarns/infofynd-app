@@ -5,7 +5,7 @@ export default function PostCard({ post }) {
 
   return (
     <article className="flex flex-col bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="h-44 w-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+      <div className="h-65 w-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
         <img
           src={post.imageUrl || defaultPlaceholder}
           alt={post.title}
@@ -13,7 +13,7 @@ export default function PostCard({ post }) {
             e.currentTarget.onerror = null;
             e.currentTarget.src = defaultPlaceholder;
           }}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[45%_55%]"
         />
       </div>
       <div className="p-5 flex flex-col grow">

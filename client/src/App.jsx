@@ -9,7 +9,7 @@ export default function App() {
   return (
     <div className="min-h-dvh flex flex-col transition-colors">
       <Navbar />
-      <main className="max-w-5xl w-full mx-auto p-4 grow">
+      <main className="max-w-6xl w-full mx-auto p-4 grow">
         <Routes>
           <Route index element={<Home />} />
           <Route path="/omoss" element={<About />} />
