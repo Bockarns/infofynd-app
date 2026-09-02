@@ -1,5 +1,6 @@
 import express from "express";
 import postRoutes from "./routes/postRoutes.js";
+import memberRoutes from "./routes/memberRoutes.js";
 import db from "./data/db.js";
 
 const app = express();
@@ -7,6 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/posts", postRoutes);
+app.use("/api/members", memberRoutes);
 
 const port = 8000;
 

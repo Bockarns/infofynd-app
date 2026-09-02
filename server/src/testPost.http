@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### 7. Arkivera ett inlägg (Sätter archived = 1 så det hamnar i arkivet)
-PATCH {{baseUrl}}/1/archive
+PATCH {{baseUrl}}/7/archive
 
 ### 8. Radera ett inlägg (ID: 2)
 DELETE {{baseUrl}}/2

@@ -32,7 +32,17 @@ export default function PostCard({ post }) {
         <h3 className="text-lg font-bold mb-2 line-clamp-2">{post.title}</h3>
 
         <p className="text-sm grow mb-4 opacity-80">{post.description}</p>
-
+        {post.archived === 1 &&
+          post.discountAmount !== null &&
+          post.discountType !== null && (
+            <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold w-fit">
+              <span>Rabatt:</span>
+              <span>
+                {post.discountAmount}{" "}
+                {post.discountType === "percent" ? "%" : "kr"}
+              </span>
+            </div>
+          )}
         <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs opacity-60">
           <span>{post.authorName || "InfoFynd"}</span>
           <span>

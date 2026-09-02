@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Archive from "./pages/Archive/Archive";
 import RegisterNewMember from "./pages/Register/RegisterMember";
+import GDPR from "./pages/GDPR/GDPR";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/omoss" element={<About />} />
           <Route path="/arkiv" element={<Archive />} />
           <Route path="/nymedlem" element={<RegisterNewMember />} />
+          <Route path="/gdpr" element={<GDPR />} />
         </Routes>
       </main>
       <footer className="border-t border-slate-300 dark:border-slate-800 bg-blue-50 dark:bg-slate-800 py-6 mt-12 text-center text-xs opacity-75">
