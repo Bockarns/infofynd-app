@@ -28,12 +28,12 @@ Content-Type: application/json
 
 {
   "type": "offer",
-  "title": "25% på sommarmeny",
-  "description": "Som medlem får du 25% rabatt på hela à la carte-menyn under hela helgen.",
-  "censoredDescription": "Få 25% rabatt på à la carte-menyn. Bli medlem för att ta del av koden.",
+  "title": "Erbjudande på Tidning",
+  "description": "Som medlem får du 3 månader gratis tidning och sedan 2år med 15% rabatt.",
+  "censoredDescription": "Få fin rabatt på din lokala nyhetstidning. Bli medlem för att ta del av koden.",
   "imageUrl": "/images/posts/placeholders/placeholder-light.webp",
-  "discountCode": "SOMMAR25",
-  "discountAmount": 25,
+  "discountCode": "InFoTidning26",
+  "discountAmount": 15,
   "discountType": "percent"
 }
 
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### 7. Arkivera ett inlägg (Sätter archived = 1 så det hamnar i arkivet)
-PATCH {{baseUrl}}/7/archive
+PATCH {{baseUrl}}/8/archive
 
 ### 8. Radera ett inlägg (ID: 2)
 DELETE {{baseUrl}}/2

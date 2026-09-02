@@ -5,6 +5,10 @@ import About from "./pages/About/About";
 import Archive from "./pages/Archive/Archive";
 import RegisterNewMember from "./pages/Register/RegisterMember";
 import GDPR from "./pages/GDPR/GDPR";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminLayout from "./components/Admin/AdminLayout";
+import AdminMembers from "./components/Admin/AdminMembers";
+import AdminPosts from "./components/Admin/AdminPosts";
 
 export default function App() {
   return (
@@ -17,6 +21,11 @@ export default function App() {
           <Route path="/arkiv" element={<Archive />} />
           <Route path="/nymedlem" element={<RegisterNewMember />} />
           <Route path="/gdpr" element={<GDPR />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="members" element={<AdminMembers />} />
+            <Route path="posts" element={<AdminPosts />} />
+          </Route>
         </Routes>
       </main>
       <footer className="border-t border-slate-300 dark:border-slate-800 bg-blue-50 dark:bg-slate-800 py-6 mt-12 text-center text-xs opacity-75">

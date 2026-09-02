@@ -44,6 +44,9 @@ export default function Navbar() {
           <NavLink to="/nymedlem" className={linkClass}>
             Registrera
           </NavLink>
+          <NavLink to="/admin" className={linkClass}>
+            Admin
+          </NavLink>
           <DarkModeToggle />
         </nav>
 
@@ -117,6 +120,13 @@ export default function Navbar() {
             className={mobileLinkClass}
           >
             Registrera
+          </NavLink>
+          <NavLink
+            to="/admin"
+            onClick={() => setIsOpen(false)}
+            className={mobileLinkClass}
+          >
+            Admin
           </NavLink>
         </div>
       )}

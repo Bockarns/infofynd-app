@@ -86,7 +86,6 @@ export default function MembersForm() {
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
-          required
           className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           placeholder="Ditt förnamn"
         />
@@ -102,7 +101,6 @@ export default function MembersForm() {
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
-          required
           className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           placeholder="Ditt efternamn"
         />
@@ -118,7 +116,6 @@ export default function MembersForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          required
           className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           placeholder="namn@exempel.se"
         />
@@ -131,7 +128,6 @@ export default function MembersForm() {
           name="approveGDPR"
           checked={formData.approveGDPR}
           onChange={handleChange}
-          required
           className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
         />
         <label
