@@ -1,6 +1,8 @@
 import db from "../data/db.js";
 
-export function getActivePosts() {
+export function getActivePosts(page = 1, limit = 10) {
+  const offset = (page - 1) * limit;
+
   const stmt = db.prepare(`
     SELECT 
       posts.id,
@@ -16,18 +18,21 @@ export function getActivePosts() {
     LEFT JOIN admins ON posts.createdBy = admins.id
     WHERE posts.archived = 0
     ORDER BY posts.createdAt DESC
+    LIMIT ? OFFSET ?
   `);
 
-  return stmt.all();
+  return stmt.all(limit, offset);
 }
 
-export function getArchivedPosts() {
+export function getArchivedPosts(page = 1, limit = 10) {
+  const offset = (page - 1) * limit;
+
   const stmt = db.prepare(`
     SELECT 
       posts.id,
       posts.type,
       posts.title,
-      posts.description,
+      posts.description AS description,
       posts.imageUrl,
       posts.discountAmount,
       posts.discountType,
@@ -38,9 +43,10 @@ export function getArchivedPosts() {
     LEFT JOIN admins ON posts.createdBy = admins.id
     WHERE posts.archived = 1
     ORDER BY posts.createdAt DESC
+    LIMIT ? OFFSET ?
   `);
 
-  return stmt.all();
+  return stmt.all(limit, offset);
 }
 
 export function getPostById(id) {

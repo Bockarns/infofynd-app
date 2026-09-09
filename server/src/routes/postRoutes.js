@@ -14,7 +14,10 @@ const router = Router();
 // GET /api/posts
 router.get("/", (req, res) => {
   try {
-    const posts = getActivePosts();
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const posts = getActivePosts(page, limit);
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ error: "Kunde inte hämta aktiva inlägg." });
@@ -24,7 +27,10 @@ router.get("/", (req, res) => {
 // GET /api/posts/archived
 router.get("/archived", (req, res) => {
   try {
-    const posts = getArchivedPosts();
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const posts = getArchivedPosts(page, limit);
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ error: "Kunde inte hämta arkiverade inlägg." });

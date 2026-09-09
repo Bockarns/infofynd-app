@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminLayout from "./components/Admin/AdminLayout";
 import AdminMembers from "./components/Admin/AdminMembers";
 import AdminPosts from "./components/Admin/AdminPosts";
+import AdminCreatePost from "./components/Admin/AdminCreatePost";
 
 export default function App() {
   return (
@@ -23,8 +24,9 @@ export default function App() {
           <Route path="/gdpr" element={<GDPR />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
-            <Route path="members" element={<AdminMembers />} />
-            <Route path="posts" element={<AdminPosts />} />
+            <Route path="medlem" element={<AdminMembers />} />
+            <Route path="inlägg" element={<AdminPosts />} />
+            <Route path="inlägg/nytt" element={<AdminCreatePost />} />
           </Route>
         </Routes>
       </main>

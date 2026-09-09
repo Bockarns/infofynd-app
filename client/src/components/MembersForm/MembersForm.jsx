@@ -56,7 +56,7 @@ export default function MembersForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4 max-w-xl mx-auto"
+      className="bg-blue-50/80 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4 max-w-xl mx-auto"
     >
       <h2 className="text-xl font-bold mb-2">Ansök om medlemskap</h2>
       <p className="text-sm opacity-80 mb-6">

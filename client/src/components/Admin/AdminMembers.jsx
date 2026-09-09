@@ -57,7 +57,7 @@ export default function AdminMembers() {
           <p className="p-6 text-sm ">Inga medlemmar hittades i databasen.</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-sm  bg-white dark:bg-slate-950">
+            <table className="w-full text-left border-collapse text-sm  bg-blue-100 dark:bg-slate-950">
               <thead>
                 <tr className="border-b">
                   <th className="py-3 px-4 font-semibold">Namn</th>

@@ -12,7 +12,7 @@ export default function AdminLayout() {
 
           <nav className="space-y-1">
             <NavLink
-              to="/admin/members"
+              to="/admin/medlem"
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2 rounded-xl font-medium text-sm transition-colors ${
                   isActive
@@ -25,7 +25,8 @@ export default function AdminLayout() {
             </NavLink>
 
             <NavLink
-              to="/admin/posts"
+              to="/admin/inlägg"
+              end
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2 rounded-xl font-medium text-sm transition-colors ${
                   isActive
@@ -35,6 +36,18 @@ export default function AdminLayout() {
               }
             >
               <span>📰</span> Hantera Inlägg
+            </NavLink>
+            <NavLink
+              to="/admin/inlägg/nytt"
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2 rounded-xl font-medium text-sm transition-colors ${
+                  isActive
+                    ? "bg-emerald-600 text-white shadow-sm"
+                    : " hover:text-slate-100 hover:bg-slate-800/60"
+                }`
+              }
+            >
+              <span>✍️</span> Skapa Inlägg
             </NavLink>
           </nav>
         </div>
