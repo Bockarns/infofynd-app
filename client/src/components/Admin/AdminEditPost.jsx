@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import AdminPostForm from "./AdminPostForm";
+import ConfirmModal from "../SiteComponents/ConfirmModal";
 
 export default function AdminEditPost() {
   const { id } = useParams();
@@ -9,11 +10,19 @@ export default function AdminEditPost() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    confirmText: "",
+    confirmColor: "",
+    onConfirm: null,
+  });
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`/api/posts/${id}`);
+        const res = await fetch(`/api/posts/admin/${id}`);
         if (!res.ok) throw new Error("Kunde inte hämta inlägget.");
         const data = await res.json();
         setPost(data);
@@ -27,7 +36,18 @@ export default function AdminEditPost() {
     fetchPost();
   }, [id]);
 
-  const handleUpdate = async (formData) => {
+  const handleFormSubmit = (formData) => {
+    setModalConfig({
+      isOpen: true,
+      title: "Spara ändringar",
+      message: "Är du säker på att du vill uppdatera detta inlägg?",
+      confirmText: "Spara ändringar",
+      confirmColor: "bg-emerald-600 hover:bg-emerald-500",
+      onConfirm: () => executeUpdate(formData),
+    });
+  };
+
+  const executeUpdate = async (formData) => {
     try {
       const res = await fetch(`/api/posts/${id}`, {
         method: "PUT",
@@ -38,12 +58,19 @@ export default function AdminEditPost() {
       if (!res.ok) throw new Error("Kunde inte uppdatera inlägget.");
 
       setMessage("Inlägget sparades framgångsrikt!");
+      closeModal();
+
       setTimeout(() => {
         navigate("/admin/inlägg");
       }, 1200);
     } catch (err) {
       alert(err.message);
+      closeModal();
     }
+  };
+
+  const closeModal = () => {
+    setModalConfig((prev) => ({ ...prev, isOpen: false }));
   };
 
   if (loading)
@@ -61,12 +88,25 @@ export default function AdminEditPost() {
         </p>
       </div>
 
-      {message && <p className="text-sm text-emerald-400 mb-4">{message}</p>}
+      {message && (
+        <p className="text-sm text-emerald-500 mb-4 font-medium">{message}</p>
+      )}
 
       <AdminPostForm
+        key={post.id}
         initialData={post}
-        onSubmit={handleUpdate}
+        onSubmit={handleFormSubmit}
         buttonText="Spara ändringar"
+      />
+
+      <ConfirmModal
+        isOpen={modalConfig.isOpen}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        confirmText={modalConfig.confirmText}
+        confirmColor={modalConfig.confirmColor}
+        onConfirm={modalConfig.onConfirm}
+        onClose={closeModal}
       />
     </div>
   );

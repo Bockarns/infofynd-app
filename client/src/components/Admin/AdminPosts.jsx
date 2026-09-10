@@ -71,6 +71,29 @@ export default function AdminPosts() {
     });
   };
 
+  const openUnarchiveModal = (id) => {
+    setModalConfig({
+      isOpen: true,
+      title: "Återaktivera inlägg",
+      message: "Vill du flytta tillbaka inlägget till de aktiva inläggen?",
+      confirmText: "Återaktivera",
+      confirmColor: "bg-emerald-600 hover:bg-emerald-500",
+      onConfirm: async () => {
+        try {
+          const res = await fetch(`/api/posts/${id}/unarchive`, {
+            method: "PATCH",
+          });
+          if (!res.ok) throw new Error("Kunde inte återaktivera inlägget.");
+          setPosts((prev) => prev.filter((p) => p.id !== id));
+          closeModal();
+        } catch (err) {
+          alert(err.message);
+          closeModal();
+        }
+      },
+    });
+  };
+
   const openDeleteModal = (id) => {
     setModalConfig({
       isOpen: true,
@@ -144,9 +167,9 @@ export default function AdminPosts() {
         ) : (
           <div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-sm text-slate-900 dark:text-slate-100">
+              <table className="w-full text-left border-collapse text-sm ">
                 <thead>
-                  <tr className="border-b border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 text-slate-600 dark:text-slate-400">
+                  <tr>
                     <th className="py-3 px-4 font-semibold">Titel</th>
                     <th className="py-3 px-4 font-semibold">Typ</th>
                     <th className="py-3 px-4 font-semibold">Författare</th>
@@ -183,13 +206,22 @@ export default function AdminPosts() {
                         {new Date(post.createdAt).toLocaleDateString()}
                       </td>
                       <td className="py-3 px-4 text-right space-x-2">
-                        <Link
-                          to={`/admin/inlägg/redigera/${post.id}`}
-                          className="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium transition-colors"
-                        >
-                          Redigera
-                        </Link>
-
+                        {tab === "active" && (
+                          <Link
+                            to={`/admin/inlägg/redigera/${post.id}`}
+                            className="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium transition-colors"
+                          >
+                            Redigera
+                          </Link>
+                        )}
+                        {tab === "archived" && (
+                          <button
+                            onClick={() => openUnarchiveModal(post.id)}
+                            className="px-3 py-1 bg-emerald-100 dark:bg-emerald-950/50 hover:bg-emerald-200 dark:hover:bg-emerald-900 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800 rounded-lg text-xs font-medium transition-colors cursor-pointer"
+                          >
+                            Återaktivera
+                          </button>
+                        )}
                         {tab === "active" && (
                           <button
                             onClick={() => openArchiveModal(post.id)}

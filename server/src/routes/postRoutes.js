@@ -6,6 +6,7 @@ import {
   createPost,
   updatePost,
   archivePost,
+  unarchivePost,
   deletePost,
 } from "../services/postService.js";
 
@@ -38,6 +39,23 @@ router.get("/archived", (req, res) => {
 });
 
 // GET /api/posts/:id
+router.get("/admin/:id", (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: "Ogiltigt ID." });
+    }
+
+    const post = getPostById(id);
+    if (!post) {
+      return res.status(404).json({ error: "Inlägget hittades inte." });
+    }
+
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(500).json({ error: "Ett serverfel uppstod." });
+  }
+});
 router.get("/:id", (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -50,7 +68,6 @@ router.get("/:id", (req, res) => {
       return res.status(404).json({ error: "Inlägget hittades inte." });
     }
 
-    // Om inlägget är aktivt döljs rabattkoden och bara censurerad text skickas
     if (post.archived === 0) {
       post.description = post.censoredDescription;
       delete post.discountCode;
@@ -110,6 +127,23 @@ router.patch("/:id/archive", (req, res) => {
     res.status(200).json({ message: "Inlägget har arkiverats." });
   } catch (error) {
     res.status(500).json({ error: "Kunde inte arkivera inlägget." });
+  }
+});
+
+// PATCH /api/posts/:id/unarchive
+router.patch("/:id/unarchive", (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    const unarchived = unarchivePost(id);
+
+    if (!unarchived) {
+      return res.status(404).json({ error: "Inlägget hittades inte." });
+    }
+
+    res.status(200).json({ message: "Inlägget har återaktiverats." });
+  } catch (error) {
+    console.error("FEL VID ÅTERAKTIVERING:", error); // <--- Lägg till denna rad
+    res.status(500).json({ error: error.message }); // <--- Skicka med det riktiga meddelandet till frontend
   }
 });
 

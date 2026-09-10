@@ -52,12 +52,12 @@ export default function AdminMembers() {
         </p>
       </div>
 
-      <div className=" border border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
         {members.length === 0 ? (
           <p className="p-6 text-sm ">Inga medlemmar hittades i databasen.</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-sm  bg-blue-100 dark:bg-slate-950">
+            <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="border-b">
                   <th className="py-3 px-4 font-semibold">Namn</th>

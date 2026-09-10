@@ -5,3 +5,9 @@
 body {
   @apply bg-blue-200 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
 }
+table {
+  @apply text-slate-900 dark:text-slate-100;
+}
+tr {
+  @apply border-b border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 text-slate-600 dark:text-slate-400;
+}

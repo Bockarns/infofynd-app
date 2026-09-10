@@ -10,6 +10,7 @@ import AdminLayout from "./components/Admin/AdminLayout";
 import AdminMembers from "./components/Admin/AdminMembers";
 import AdminPosts from "./components/Admin/AdminPosts";
 import AdminCreatePost from "./components/Admin/AdminCreatePost";
+import AdminEditPost from "./components/Admin/AdminEditPost";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="medlem" element={<AdminMembers />} />
             <Route path="inlägg" element={<AdminPosts />} />
             <Route path="inlägg/nytt" element={<AdminCreatePost />} />
+            <Route path="inlägg/redigera/:id" element={<AdminEditPost />} />
           </Route>
         </Routes>
       </main>

@@ -52,7 +52,17 @@ export function getArchivedPosts(page = 1, limit = 10) {
 export function getPostById(id) {
   const stmt = db.prepare(`
     SELECT 
-      posts.*,
+      posts.id,
+      posts.type,
+      posts.title,
+      posts.description, 
+      posts.censoredDescription, 
+      posts.imageUrl,
+      posts.discountCode,
+      posts.discountAmount,
+      posts.discountType,
+      posts.archived,
+      posts.createdAt,
       admins.firstName || ' ' || admins.lastName AS authorName
     FROM posts
     LEFT JOIN admins ON posts.createdBy = admins.id
@@ -105,6 +115,8 @@ export function createPost(postData, authorId = 1) {
       subject: postData.title,
       body: postData.description,
       discountCode: postData.discountCode || null,
+      discountAmount: postData.discountAmount || null,
+      discountType: postData.discountType || null,
     },
   };
 }
@@ -147,6 +159,12 @@ export function archivePost(id) {
 
 export function deletePost(id) {
   const stmt = db.prepare(`DELETE FROM posts WHERE id = ?`);
+  const result = stmt.run(id);
+  return result.changes > 0;
+}
+
+export function unarchivePost(id) {
+  const stmt = db.prepare("UPDATE posts SET archived = 0 WHERE id = ?");
   const result = stmt.run(id);
   return result.changes > 0;
 }
