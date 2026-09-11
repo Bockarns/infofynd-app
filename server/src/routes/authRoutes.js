@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const router = Router();
-const JWT_SECRET = process.env.JWT_SECRET || "din_hemliga_nyckel_byt_ut_den";
+const JWT_SECRET = process.env.JWT_SECRET || "Bälte_och_Livrem_är_bra";
 
 // POST /api/auth/login
 router.post("/login", async (req, res) => {

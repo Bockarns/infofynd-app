@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
 import Navbar from "./components/SiteComponents/Navbar";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
@@ -11,6 +11,15 @@ import AdminMembers from "./components/Admin/AdminMembers";
 import AdminPosts from "./components/Admin/AdminPosts";
 import AdminCreatePost from "./components/Admin/AdminCreatePost";
 import AdminEditPost from "./components/Admin/AdminEditPost";
+import AdminLogin from "./components/Admin/AdminLogin";
+
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return <Navigate to="/admin/login" replace />;
+  }
+  return children;
+};
 
 export default function App() {
   return (
@@ -23,7 +32,17 @@ export default function App() {
           <Route path="/arkiv" element={<Archive />} />
           <Route path="/nymedlem" element={<RegisterNewMember />} />
           <Route path="/gdpr" element={<GDPR />} />
-          <Route path="/admin" element={<AdminLayout />}>
+
+          <Route path="/admin/login" element={<AdminLogin />} />
+
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<AdminDashboard />} />
             <Route path="medlem" element={<AdminMembers />} />
             <Route path="inlägg" element={<AdminPosts />} />

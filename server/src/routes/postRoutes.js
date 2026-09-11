@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { verifyToken } from "../middlewares/authMiddleware.js";
 import {
   getActivePosts,
   getArchivedPosts,
@@ -39,7 +40,7 @@ router.get("/archived", (req, res) => {
 });
 
 // GET /api/posts/:id
-router.get("/admin/:id", (req, res) => {
+router.get("/admin/:id", verifyToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
     if (isNaN(id)) {
@@ -80,7 +81,7 @@ router.get("/:id", (req, res) => {
 });
 
 // POST /api/posts
-router.post("/", (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   try {
     const { title, type, description } = req.body;
     if (!title || !type || !description) {
@@ -97,7 +98,7 @@ router.post("/", (req, res) => {
 });
 
 // PUT /api/posts/:id
-router.put("/:id", (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
     const updated = updatePost(id, req.body);
@@ -115,7 +116,7 @@ router.put("/:id", (req, res) => {
 });
 
 // PATCH /api/posts/:id/archive
-router.patch("/:id/archive", (req, res) => {
+router.patch("/:id/archive", verifyToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
     const archived = archivePost(id);
@@ -131,7 +132,7 @@ router.patch("/:id/archive", (req, res) => {
 });
 
 // PATCH /api/posts/:id/unarchive
-router.patch("/:id/unarchive", (req, res) => {
+router.patch("/:id/unarchive", verifyToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
     const unarchived = unarchivePost(id);
@@ -148,7 +149,7 @@ router.patch("/:id/unarchive", (req, res) => {
 });
 
 // DELETE /api/posts/:id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
     const deleted = deletePost(id);
