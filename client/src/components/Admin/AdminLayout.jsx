@@ -77,6 +77,18 @@ export default function AdminLayout() {
             >
               <span>✍️</span> Skapa Inlägg
             </NavLink>
+            <NavLink
+              to="/admin/administratorer"
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2 rounded-xl font-medium text-sm transition-colors ${
+                  isActive
+                    ? "bg-emerald-600 text-white shadow-sm"
+                    : " hover:text-slate-100 hover:bg-slate-800/60"
+                }`
+              }
+            >
+              <span>🛡️</span> Admin-konton
+            </NavLink>
           </nav>
         </div>
         <div className="mt-10 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2 px-2">

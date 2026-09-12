@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import AdminPostForm from "./AdminPostForm";
-import ConfirmModal from "../SiteComponents/ConfirmModal";
+import AdminPostForm from "../../components/Admin/AdminPostForm";
+import ConfirmModal from "../../components/SiteComponents/ConfirmModal";
 
 export default function AdminEditPost() {
   const { id } = useParams();

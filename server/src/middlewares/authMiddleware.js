@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "din_hemliga_nyckel_byt_ut_den";
+const JWT_SECRET = process.env.JWT_SECRET || "Bälte_och_Livrem_är_bra";
 
 export const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -21,3 +21,12 @@ export const verifyToken = (req, res, next) => {
     return res.status(403).json({ error: "Ogiltig eller utgången token." });
   }
 };
+
+export function requireSuperAdmin(req, res, next) {
+  if (!req.admin || req.admin.superAdmin !== 1) {
+    return res
+      .status(403)
+      .json({ error: "Åtkomst nekad. Kräver behörighet som Super Admin." });
+  }
+  next();
+}

@@ -7,11 +7,12 @@ import RegisterNewMember from "./pages/Register/RegisterMember";
 import GDPR from "./pages/GDPR/GDPR";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminLayout from "./components/Admin/AdminLayout";
-import AdminMembers from "./components/Admin/AdminMembers";
-import AdminPosts from "./components/Admin/AdminPosts";
-import AdminCreatePost from "./components/Admin/AdminCreatePost";
-import AdminEditPost from "./components/Admin/AdminEditPost";
-import AdminLogin from "./components/Admin/AdminLogin";
+import AdminMembers from "./pages/Admin/AdminMembers";
+import AdminPosts from "./pages/Admin/AdminPosts";
+import AdminCreatePost from "./pages/Admin/AdminCreatePost";
+import AdminEditPost from "./pages/Admin/AdminEditPost";
+import AdminLogin from "./pages/Admin/AdminLogin";
+import AdminManagement from "./pages/Admin/AdminManagement";
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="inlägg" element={<AdminPosts />} />
             <Route path="inlägg/nytt" element={<AdminCreatePost />} />
             <Route path="inlägg/redigera/:id" element={<AdminEditPost />} />
+            <Route path="administratorer" element={<AdminManagement />} />
           </Route>
         </Routes>
       </main>

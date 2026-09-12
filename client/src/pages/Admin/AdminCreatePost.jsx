@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import AdminPostForm from "./AdminPostForm";
-import EmailPreviewModal from "../SiteComponents/EmailPreviewModal"; // Justera sökvägen beroende på var du lägger den
+import AdminPostForm from "../../components/Admin/AdminPostForm";
+import EmailPreviewModal from "../../components/SiteComponents/EmailPreviewModal"; // Justera sökvägen beroende på var du lägger den
 
 export default function AdminCreatePost() {
   const navigate = useNavigate();

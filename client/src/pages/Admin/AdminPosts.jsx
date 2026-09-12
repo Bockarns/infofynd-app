@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import ConfirmModal from "../SiteComponents/ConfirmModal";
+import ConfirmModal from "../../components/SiteComponents/ConfirmModal";
 
 export default function AdminPosts() {
   const [posts, setPosts] = useState([]);
