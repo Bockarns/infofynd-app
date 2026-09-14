@@ -81,7 +81,7 @@ export default function AdminMembers() {
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           member.status === "approved"
                             ? "bg-emerald-950 text-emerald-400 border border-emerald-800/60"
-                            : member.status === "rejected"
+                            : member.status === "denied"
                               ? "bg-red-950 text-red-400 border border-red-800/60"
                               : "bg-amber-950 text-amber-400 border border-amber-800/60"
                         }`}

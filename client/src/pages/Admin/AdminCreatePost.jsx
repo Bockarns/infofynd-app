@@ -11,7 +11,7 @@ export default function AdminCreatePost() {
 
   const handleCreate = async (formData) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       const res = await fetch("/api/posts", {
         method: "POST",

@@ -93,6 +93,13 @@ export function createPost(postData, authorId = 1) {
     authorId,
   );
 
+  // Hämta författarens namn från admins-tabellen
+  const author = db
+    .prepare(
+      `SELECT firstName || ' ' || lastName AS name FROM admins WHERE id = ?`,
+    )
+    .get(authorId);
+
   // Hämta godkända medlemmar för utskickssimulering
   const members = db
     .prepare(`SELECT email FROM members WHERE status = 'approved'`)
@@ -117,6 +124,7 @@ export function createPost(postData, authorId = 1) {
       discountCode: postData.discountCode || null,
       discountAmount: postData.discountAmount || null,
       discountType: postData.discountType || null,
+      authorName: author ? author.name : "Admin", // <--- Skickar med rätt namn dynamiskt!
     },
   };
 }

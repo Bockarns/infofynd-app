@@ -24,7 +24,7 @@ export default function AdminPosts() {
       setLoading(true);
       setError(null);
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const endpoint =
           tab === "archived"
             ? `/api/posts/archived?page=${page}&limit=${limit}`
@@ -61,7 +61,7 @@ export default function AdminPosts() {
       confirmColor: "bg-amber-600 hover:bg-amber-500",
       onConfirm: async () => {
         try {
-          const token = localStorage.getItem("token");
+          const token = sessionStorage.getItem("token");
           const res = await fetch(`/api/posts/${id}/archive`, {
             method: "PATCH",
             headers: { Authorization: `Bearer ${token}` },
@@ -86,7 +86,7 @@ export default function AdminPosts() {
       confirmColor: "bg-emerald-600 hover:bg-emerald-500",
       onConfirm: async () => {
         try {
-          const token = localStorage.getItem("token");
+          const token = sessionStorage.getItem("token");
           const res = await fetch(`/api/posts/${id}/unarchive`, {
             method: "PATCH",
             headers: { Authorization: `Bearer ${token}` },
@@ -111,7 +111,7 @@ export default function AdminPosts() {
       confirmColor: "bg-red-600 hover:bg-red-500",
       onConfirm: async () => {
         try {
-          const token = localStorage.getItem("token");
+          const token = sessionStorage.getItem("token");
           const res = await fetch(`/api/posts/${id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` },
@@ -238,7 +238,7 @@ export default function AdminPosts() {
                         {tab === "active" && (
                           <button
                             onClick={() => openArchiveModal(post.id)}
-                            className="px-3 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-950 hover:text-amber-700 dark:hover:text-amber-400 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium transition-colors cursor-pointer"
+                            className="px-3 py-1 bg-amber-100 dark:bg-amber-950/50 hover:bg-amber-200 dark:hover:bg-amber-950 hover:text-amber-700 dark:hover:text-amber-400 border border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300 rounded-lg text-xs font-medium transition-colors cursor-pointer"
                           >
                             Arkivera
                           </button>

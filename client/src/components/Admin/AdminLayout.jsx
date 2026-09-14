@@ -41,8 +41,8 @@ export default function AdminLayout() {
     "AD";
 
   return (
-    <div className="flex rounded-xl border border-slate-300 dark:border-slate-800 bg-blue-50/80 dark:bg-slate-800/80 overflow-hidden">
-      <aside className="w-64 border-r flex flex-col justify-between p-4">
+    <div className="flex flex-col md:flex-row rounded-xl border border-slate-300 dark:border-slate-800 bg-blue-50/80 dark:bg-slate-800/80 overflow-hidden">
+      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-slate-300 dark:border-slate-800 flex flex-col justify-between p-4 bg-white/50 dark:bg-slate-900/50">
         <div className="space-y-6">
           <div className="flex items-center gap-2 px-2 font-bold text-lg ">
             <span className="text-emerald-400">iF</span>

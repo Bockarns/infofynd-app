@@ -22,7 +22,7 @@ export default function AdminEditPost() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const res = await fetch(`/api/posts/admin/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });

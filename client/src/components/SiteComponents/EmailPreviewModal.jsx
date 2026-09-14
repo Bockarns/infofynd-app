@@ -11,7 +11,7 @@ export default function EmailPreviewModal({
   const postForCard = {
     ...mailData,
     description: mailData.body,
-    authorName: "Admin Gordon",
+    authorName: mailData.authorName || "Admin",
     createdAt: new Date().toISOString(),
     archived: 1,
   };

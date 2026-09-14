@@ -90,7 +90,7 @@ router.post("/", verifyToken, async (req, res) => {
         .json({ error: "Titel, typ och beskrivning är obligatoriska fält." });
     }
 
-    const newPost = createPost(req.body);
+    const newPost = createPost(req.body, req.admin.id);
     res.status(201).json(newPost);
   } catch (error) {
     res.status(500).json({ error: "Kunde inte skapa inlägget." });
