@@ -19,10 +19,6 @@ app.use("/api/members", memberRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admins", adminRoutes);
 
-app.get("/api", (req, res) => {
-  res.send("Hello World! how you doing?");
-});
-
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("*", (req, res) => {
