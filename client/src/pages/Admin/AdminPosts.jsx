@@ -24,12 +24,15 @@ export default function AdminPosts() {
       setLoading(true);
       setError(null);
       try {
+        const token = localStorage.getItem("token");
         const endpoint =
           tab === "archived"
             ? `/api/posts/archived?page=${page}&limit=${limit}`
             : `/api/posts?page=${page}&limit=${limit}`;
 
-        const res = await fetch(endpoint);
+        const res = await fetch(endpoint, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         if (!res.ok) throw new Error("Kunde inte hämta inlägg.");
         const data = await res.json();
         setPosts(data);
@@ -42,6 +45,7 @@ export default function AdminPosts() {
 
     fetchPosts();
   }, [tab, page]);
+
   const handleTabChange = (newTab) => {
     setTab(newTab);
     setPage(1);
@@ -57,8 +61,10 @@ export default function AdminPosts() {
       confirmColor: "bg-amber-600 hover:bg-amber-500",
       onConfirm: async () => {
         try {
+          const token = localStorage.getItem("token");
           const res = await fetch(`/api/posts/${id}/archive`, {
             method: "PATCH",
+            headers: { Authorization: `Bearer ${token}` },
           });
           if (!res.ok) throw new Error("Kunde inte arkivera inlägget.");
           setPosts((prev) => prev.filter((p) => p.id !== id));
@@ -80,8 +86,10 @@ export default function AdminPosts() {
       confirmColor: "bg-emerald-600 hover:bg-emerald-500",
       onConfirm: async () => {
         try {
+          const token = localStorage.getItem("token");
           const res = await fetch(`/api/posts/${id}/unarchive`, {
             method: "PATCH",
+            headers: { Authorization: `Bearer ${token}` },
           });
           if (!res.ok) throw new Error("Kunde inte återaktivera inlägget.");
           setPosts((prev) => prev.filter((p) => p.id !== id));
@@ -103,7 +111,11 @@ export default function AdminPosts() {
       confirmColor: "bg-red-600 hover:bg-red-500",
       onConfirm: async () => {
         try {
-          const res = await fetch(`/api/posts/${id}`, { method: "DELETE" });
+          const token = localStorage.getItem("token");
+          const res = await fetch(`/api/posts/${id}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${token}` },
+          });
           if (!res.ok) throw new Error("Kunde inte radera inlägget.");
           setPosts((prev) => prev.filter((p) => p.id !== id));
           closeModal();
@@ -118,6 +130,7 @@ export default function AdminPosts() {
   const closeModal = () => {
     setModalConfig((prev) => ({ ...prev, isOpen: false }));
   };
+
   return (
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">

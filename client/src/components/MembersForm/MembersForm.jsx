@@ -65,59 +65,53 @@ export default function MembersForm() {
       </p>
 
       {error && (
-        <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-sm font-medium">
+        <div className="p-3 rounded-xl bg-red-100 dark:bg-red-950/50 border border-red-300 dark:border-red-900 text-red-700 dark:text-red-300 text-sm font-medium">
           {error}
         </div>
       )}
 
       {success && (
-        <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-sm font-medium">
+        <div className="p-3 rounded-xl bg-emerald-100 dark:bg-emerald-950/50 border border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-sm font-medium">
           {success}
         </div>
       )}
 
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="firstName">
-          Förnamn
-        </label>
+        <label htmlFor="firstName">Förnamn</label>
         <input
           type="text"
           id="firstName"
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           placeholder="Ditt förnamn"
+          required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="lastName">
-          Efternamn
-        </label>
+        <label htmlFor="lastName">Efternamn</label>
         <input
           type="text"
           id="lastName"
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           placeholder="Ditt efternamn"
+          required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="email">
-          E-postadress
-        </label>
+        <label htmlFor="email">E-postadress</label>
         <input
           type="email"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           placeholder="namn@exempel.se"
+          required
         />
       </div>
 
@@ -128,11 +122,11 @@ export default function MembersForm() {
           name="approveGDPR"
           checked={formData.approveGDPR}
           onChange={handleChange}
-          className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+          className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
         />
         <label
           htmlFor="approveGDPR"
-          className="text-xs opacity-80 leading-relaxed cursor-pointer"
+          className="text-xs opacity-80 leading-relaxed cursor-pointer mb-0 font-normal"
         >
           Jag godkänner att InfoFynd lagrar mina uppgifter i enlighet med GDPR.
           Läs mer i vår{" "}

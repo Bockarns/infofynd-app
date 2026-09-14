@@ -22,7 +22,10 @@ export default function AdminEditPost() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`/api/posts/admin/${id}`);
+        const token = localStorage.getItem("token");
+        const res = await fetch(`/api/posts/admin/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         if (!res.ok) throw new Error("Kunde inte hämta inlägget.");
         const data = await res.json();
         setPost(data);
@@ -49,9 +52,13 @@ export default function AdminEditPost() {
 
   const executeUpdate = async (formData) => {
     try {
+      const token = localStorage.getItem("token");
       const res = await fetch(`/api/posts/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(formData),
       });
 
