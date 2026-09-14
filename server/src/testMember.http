@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:8000/api
+
+### Hämta alla medlemmar (Kräver Admin-token om du lagt till skydd)
+GET {{baseUrl}}/members
+
+### Registrera ny medlem (Gör en ansökan)
+POST http://localhost:8000/api/members
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "Medlem",
+  "email": "testmedlem@example.com",
+  "approveGDPR": 1
+}
+
+### Godkänn medlem
+PATCH {{baseUrl}}/members/1/status
+Content-Type: application/json
+
+{
+  "status": "approved"
+}
+
+### Neka medlem
+PATCH {{baseUrl}}/members/7/status
+Content-Type: application/json
+
+{
+  "status": "denied"
+}

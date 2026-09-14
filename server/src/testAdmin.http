@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:8000/api
+
+### 1. Logga in som Admin (Hämta token)
+# @name loginAdmin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@infofynd.se",
+  "password": "Test123!"
+}
+
+### Spara token från inloggningen ovan
+@token = {{loginAdmin.response.body.token}}
+
+### 2. Hämta alla administratörer (Kräver token)
+GET {{baseUrl}}/admins
+Authorization: Bearer {{token}}
+
+### 3. Skapa ny administratör (Kräver token)
+POST {{baseUrl}}/admins
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "firstName": "Ny",
+  "lastName": "Admin",
+  "email": "nyadmin@infofynd.se",
+  "password": "Lösenord123!",
+  "superAdmin": 0
+}
+### Stäng av / aktivera en administratör (Kräver Super Admin-token)
+PATCH {{baseUrl}}/admins/6/suspend
+Authorization: Bearer {{token}}
+
+### Radera en administratör (Kräver Super Admin-token)
+DELETE {{baseUrl}}/admins/6
+Authorization: Bearer {{token}}
