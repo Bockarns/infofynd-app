@@ -15,7 +15,7 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminManagement from "./pages/Admin/AdminManagement";
 
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   if (!token) {
     return <Navigate to="/admin/login" replace />;
   }

@@ -39,6 +39,7 @@ router.post("/login", async (req, res) => {
       firstName: admin.firstName,
       lastName: admin.lastName,
       superAdmin: admin.superAdmin,
+      isDemo: admin.isDemo,
     };
 
     const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: "8h" });
@@ -52,6 +53,7 @@ router.post("/login", async (req, res) => {
         lastName: admin.lastName,
         email: admin.email,
         superAdmin: admin.superAdmin,
+        isDemo: admin.isDemo,
       },
     });
   } catch (error) {

@@ -28,8 +28,8 @@ export default function AdminLogin() {
         throw new Error(data.error || "Ett fel uppstod vid inloggning.");
       }
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("admin", JSON.stringify(data.admin));
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("admin", JSON.stringify(data.admin));
 
       navigate("/admin");
     } catch (err) {
@@ -97,6 +97,32 @@ export default function AdminLogin() {
             {loading ? "Loggar in..." : "Logga in"}
           </button>
         </form>
+        <div className="mt-6 p-4 bg-slate-100 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-xl text-xs space-y-2">
+          <p className="font-semibold text-slate-700 dark:text-slate-300">
+            Demokonto för visning:
+          </p>
+          <p className="text-slate-600 dark:text-slate-400">
+            E-post:{" "}
+            <span className="font-mono text-emerald-600 dark:text-emerald-400">
+              demo@infofynd.se
+            </span>
+            <br />
+            Lösenord:{" "}
+            <span className="font-mono text-emerald-600 dark:text-emerald-400">
+              demo123
+            </span>
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setEmail("demo@infofynd.se");
+              setPassword("demo123");
+            }}
+            className="mt-2 w-full py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors cursor-pointer"
+          >
+            Fyll i demo-uppgifter
+          </button>
+        </div>
       </div>
     </div>
   );

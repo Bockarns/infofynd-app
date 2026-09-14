@@ -42,4 +42,51 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", (req, res) => {
+  try {
+    const adminId = req.params.id;
+
+    if (parseInt(adminId) === req.admin.id) {
+      return res
+        .status(400)
+        .json({ error: "Du kan inte radera ditt eget superadmin-konto." });
+    }
+
+    const result = adminService.deleteAdmin(adminId);
+
+    if (result.changes === 0) {
+      return res.status(404).json({ error: "Administratören hittades inte." });
+    }
+
+    res.status(200).json({ message: "Administratören har raderats." });
+  } catch (error) {
+    res.status(500).json({ error: "Ett serverfel uppstod." });
+  }
+});
+
+router.patch("/:id/suspend", (req, res) => {
+  try {
+    const adminId = req.params.id;
+
+    if (parseInt(adminId) === req.admin.id) {
+      return res
+        .status(400)
+        .json({ error: "Du kan inte stänga av dig själv." });
+    }
+
+    const newStatus = adminService.toggleSuspendAdmin(adminId);
+
+    if (newStatus === null) {
+      return res.status(404).json({ error: "Admin hittades inte." });
+    }
+
+    res.status(200).json({
+      message: "Kontots status har uppdaterats.",
+      suspendedAccount: newStatus,
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Ett serverfel uppstod." });
+  }
+});
+
 export default router;

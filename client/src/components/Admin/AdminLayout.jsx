@@ -1,15 +1,23 @@
+import { useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/admin/login");
+    }
+  }, [navigate]);
+
   const admin = (() => {
-    const storedAdmin = localStorage.getItem("admin");
+    const storedAdmin = sessionStorage.getItem("admin");
     if (storedAdmin) {
       try {
         return JSON.parse(storedAdmin);
       } catch (e) {
-        console.error("Kunde inte läsa admin-info från localStorage", e);
+        console.error("Kunde inte läsa admin-info från sessionStorage", e);
       }
     }
     return {
@@ -23,8 +31,8 @@ export default function AdminLayout() {
   const isSuperAdmin = admin.superAdmin === 1;
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("admin");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("admin");
     navigate("/admin/login");
   };
 

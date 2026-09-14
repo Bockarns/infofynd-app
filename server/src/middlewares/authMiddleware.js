@@ -16,6 +16,16 @@ export const verifyToken = (req, res, next) => {
 
     req.admin = decoded;
 
+    const isWriteMethod = ["POST", "PUT", "PATCH", "DELETE"].includes(
+      req.method,
+    );
+    if (decoded.isDemo === 1 && isWriteMethod) {
+      return res.status(403).json({
+        error:
+          "Demokontot har endast behörighet att läsa och kan inte utföra denna åtgärd.",
+      });
+    }
+
     next();
   } catch (error) {
     return res.status(403).json({ error: "Ogiltig eller utgången token." });
