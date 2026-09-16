@@ -21,12 +21,12 @@ app.use("/api/admins", adminRoutes);
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
-
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });

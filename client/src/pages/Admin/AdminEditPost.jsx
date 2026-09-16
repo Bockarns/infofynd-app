@@ -52,7 +52,7 @@ export default function AdminEditPost() {
 
   const executeUpdate = async (formData) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       const res = await fetch(`/api/posts/${id}`, {
         method: "PUT",
         headers: {

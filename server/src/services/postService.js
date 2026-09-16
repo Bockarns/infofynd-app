@@ -124,7 +124,7 @@ export function createPost(postData, authorId = 1) {
       discountCode: postData.discountCode || null,
       discountAmount: postData.discountAmount || null,
       discountType: postData.discountType || null,
-      authorName: author ? author.name : "Admin", // <--- Skickar med rätt namn dynamiskt!
+      authorName: author ? author.name : "Admin",
     },
   };
 }
