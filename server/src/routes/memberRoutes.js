@@ -4,6 +4,7 @@ import {
   getAllMembers,
   updateMemberStatus,
 } from "../services/memberService.js";
+import { verifyToken } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
@@ -48,7 +49,7 @@ router.post("/", (req, res) => {
 });
 
 // PATCH (Update memberstatus Admin Feature)
-router.patch("/:id/status", (req, res) => {
+router.patch("/:id/status", verifyToken, (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;

@@ -24,9 +24,13 @@ export default function AdminMembers() {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
+      const token = sessionStorage.getItem("token");
       const res = await fetch(`/api/members/${id}/status`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ status: newStatus }),
       });
 
