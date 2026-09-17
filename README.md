@@ -1,4 +1,5 @@
 # InfoFynd – Drivs av Bock AB
+![Deployed on Azure](https://img.shields.io/badge/deployed-Azure-0089D6?logo=microsoft-azure)
 
 ## Sammanfattning & Syfte
 
