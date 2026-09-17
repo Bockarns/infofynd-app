@@ -92,3 +92,6 @@ Följ dessa steg för att köra projektet lokalt:
    ```
    npm run dev
    ```
+
+   ## Om projektet
+Detta är ett skolprojekt utvecklat som del av kursen [JavaScript 2]. Inte avsett för produktionsanvändning.
