@@ -20,11 +20,11 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 - **Medlemsansökan:** Ett formulär där besökare kan ansöka om medlemskap (namn, e-post och GDPR-godkännande).
 - **GDPR-information:** Tydlig presentation av hur användarens data sparas och hanteras.
   
-  **Startsida (ljust och mörkt tema):**
+**Startsida (ljust och mörkt tema):**
 <table>
 <tr>
-<td><img width="400" src="https://github.com/user-attachments/assets/c3453558-921a-41ab-9c82-a4caefab54c7" /></td>
-<td><img width="400" src="https://github.com/user-attachments/assets/8ad6d7a0-9048-4e72-a892-93f004670296" /></td>
+<td><img width="400" alt="InfoFynd startsida - ljust tema" src="https://github.com/user-attachments/assets/c3453558-921a-41ab-9c82-a4caefab54c7" /></td>
+<td><img width="400" alt="InfoFynd startsida - mörkt tema" src="https://github.com/user-attachments/assets/8ad6d7a0-9048-4e72-a892-93f004670296" /></td>
 </tr>
 </table>
 
@@ -37,13 +37,14 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
   - Vid skapande av nytt inlägg simuleras ett epostutskick via modal.
 - **Admin-konton (Super Admin):** Möjlighet för Super Admin att skapa, lista, avstänga/aktivera och radera andra administratörskonton.
 
-  **Admin demo vy och superadmin vy**
+**Admin demo vy och superadmin vy**
 <table>
 <tr>
-<td><img width="400" src="https://github.com/user-attachments/assets/943d2809-796e-40b5-8d38-59d33518126b" /></td>
-<td><img width="400" src="https://github.com/user-attachments/assets/818c885b-858b-43c0-b355-2dde9d225ef0" /></td>
+<td><img width="400" alt="Admin demokonto vy" src="https://github.com/user-attachments/assets/943d2809-796e-40b5-8d38-59d33518126b" /></td>
+<td><img width="400" alt="Superadmin vy" src="https://github.com/user-attachments/assets/818c885b-858b-43c0-b355-2dde9d225ef0" /></td>
 </tr>
 </table>
+
 ---
 
 ## Teknisk arkitektur
