@@ -94,4 +94,4 @@ Följ dessa steg för att köra projektet lokalt:
    ```
 
    ## Om projektet
-Detta är ett skolprojekt utvecklat som del av kursen [JavaScript 2]. Inte avsett för produktionsanvändning.
+Detta är ett skolprojekt utvecklat som del av kursen JavaScript 2. Inte avsett för produktionsanvändning.
