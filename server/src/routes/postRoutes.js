@@ -143,8 +143,8 @@ router.patch("/:id/unarchive", verifyToken, async (req, res) => {
 
     res.status(200).json({ message: "Inlägget har återaktiverats." });
   } catch (error) {
-    console.error("FEL VID ÅTERAKTIVERING:", error); // <--- Lägg till denna rad
-    res.status(500).json({ error: error.message }); // <--- Skicka med det riktiga meddelandet till frontend
+    console.error("FEL VID ÅTERAKTIVERING:", error);
+    res.status(500).json({ error: error.message });
   }
 });
 
