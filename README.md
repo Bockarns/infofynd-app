@@ -72,7 +72,14 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 Följ dessa steg för att köra projektet lokalt:
 
 1. **Klona eller ladda ner projektet.**
-2. **Starta servern:**
+2. **Konfigurera miljövariabler:**
+  - Skapa en `.env` -fil i `server` -mappen
+  - Filen behöver minst innehåll som ser ut som `.env.example`-filen
+    ```
+    PORT=3000
+    JWT_SECRET=din_hemliga_jwt_nyckel_här
+    ```
+3. **Starta servern:**
    - Navigera till servermappen:
 
    ```
@@ -91,7 +98,7 @@ Följ dessa steg för att köra projektet lokalt:
    npm run dev
    ```
 
-3. **Starta klienten:**
+4. **Starta klienten:**
    - Navigera till klientmappen:
 
    ```
