@@ -1,6 +1,10 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "Bälte_och_Livrem_är_bra";
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error("Kritiskt fel: JWT_SECRET saknas i miljövariablerna!");
+}
 
 export const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
