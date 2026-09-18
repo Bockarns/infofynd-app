@@ -38,3 +38,6 @@ Thumbs.db
 # Azure och temporära filer
 .azure/
 *.tmp
+
+# Byggfiler och arkiv
+server/app.zip
