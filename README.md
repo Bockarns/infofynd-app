@@ -72,50 +72,42 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 Följ dessa steg för att köra projektet lokalt:
 
 1. **Klona eller ladda ner projektet.**
+
 2. **Konfigurera miljövariabler:**
-  - Skapa en `.env` -fil i `server` -mappen
-  - Filen behöver minst innehåll som ser ut som `.env.example`-filen
-    ```
-    PORT=3000
-    JWT_SECRET=din_hemliga_jwt_nyckel_här
-    ```
+   - Skapa en `.env`-fil i `server`-mappen.
+   - Filen bör följa strukturen i `.env.example`:
+     ```env
+     PORT=3000
+     JWT_SECRET=din_hemliga_jwt_nyckel_här
+     ```
+
 3. **Starta servern:**
    - Navigera till servermappen:
-
-   ```
-   cd server
-   ```
-
+     ```bash
+     cd server
+     ```
    - Installera beroenden:
-
-   ```
-   npm install
-   ```
-
+     ```bash
+     npm install
+     ```
    - Starta servern:
-
-   ```
-   npm run dev
-   ```
+     ```bash
+     npm run dev
+     ```
 
 4. **Starta klienten:**
    - Navigera till klientmappen:
-
-   ```
-   cd client
-   ```
-
+     ```bash
+     cd client
+     ```
    - Installera beroenden:
-
-   ```
-   npm install
-   ```
-
+     ```bash
+     npm install
+     ```
    - Starta klienten:
-
-   ```
-   npm run dev
-   ```
+     ```bash
+     npm run dev
+     ```
 
    ## Om projektet
 Detta är ett skolprojekt utvecklat som del av kursen JavaScript 2. Inte avsett för produktionsanvändning.
