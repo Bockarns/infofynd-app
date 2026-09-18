@@ -4,11 +4,16 @@ export default function AdminMembers() {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const token = sessionStorage.getItem("token");
 
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const res = await fetch("/api/members");
+        const res = await fetch("/api/members", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!res.ok) throw new Error("Kunde inte hämta medlemmar.");
         const data = await res.json();
         setMembers(data);
@@ -20,11 +25,10 @@ export default function AdminMembers() {
     };
 
     fetchMembers();
-  }, []);
+  }, [token]);
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      const token = sessionStorage.getItem("token");
       const res = await fetch(`/api/members/${id}/status`, {
         method: "PATCH",
         headers: {

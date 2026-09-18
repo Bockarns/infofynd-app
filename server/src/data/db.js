@@ -13,6 +13,7 @@ db.exec(`
     password TEXT NOT NULL,
     superAdmin INTEGER NOT NULL DEFAULT 0,
     suspendedAccount INTEGER NOT NULL DEFAULT 0,
+    isDemo INTEGER NOT NULL DEFAULT 0,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 

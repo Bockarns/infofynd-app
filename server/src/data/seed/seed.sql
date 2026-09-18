@@ -16,6 +16,18 @@ VALUES (
   1,
   0
 );
+-- Lägg till Demo-konto (används av demotesten i appen)
+INSERT INTO admins (id, firstName, lastName, email, password, superAdmin, suspendedAccount, isDemo)
+VALUES (
+  2,
+  'Demo',
+  'Användare',
+  'demo@infofynd.se',
+  '$2b$10$w1qE1vQ5pG3sQ1.placeholderHashForBcrypt',
+  0,
+  0,
+  1
+);
 
 -- 3. Lägg till 1 Nyhet och 1 Erbjudande
 INSERT INTO posts (

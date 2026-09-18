@@ -8,8 +8,8 @@ import { verifyToken } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
-// GET (Admin feature)
-router.get("/", (req, res) => {
+// GET (Admin feature - tillgänglig för alla inloggade admins, inklusive demo)
+router.get("/", verifyToken, (req, res) => {
   try {
     const members = getAllMembers();
     res.status(200).json(members);
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
   }
 });
 
-// POST
+// POST (Publik - så att nya medlemmar kan ansöka utan inloggning)
 router.post("/", (req, res) => {
   try {
     const { firstName, lastName, email, approveGDPR } = req.body;
@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
   }
 });
 
-// PATCH (Update memberstatus Admin Feature)
+// PATCH (Admin feature - skyddad med verifyToken, demo-kontot spärras i middleware)
 router.patch("/:id/status", verifyToken, (req, res) => {
   try {
     const { id } = req.params;
