@@ -1,5 +1,5 @@
-
 # InfoFynd – Drivs av Bock AB
+
 ![Deployed on Azure](https://img.shields.io/badge/deployed-Azure-0089D6?logo=microsoft-azure)
 
 ## Sammanfattning & Syfte
@@ -12,6 +12,44 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 
 ---
 
+## Projektstruktur
+
+Projektet är uppdelat i en tydlig klient-server-arkitektur med separata mappar för frontend (`client`) och backend (`server`):
+
+### 📁 Client (`/client`)
+
+```text
+client/
+├── public/
+│   ├── favicon/
+│   └── images/
+├── src/
+│   ├── assets/
+│   ├── components/       # Återanvändbara UI-komponenter (Admin, Forms, Posts, Navbar etc.)
+│   ├── pages/            # Sidkomponenter och vyer (Home, Admin, About, Archive etc.)
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+└── package.json
+```
+
+### 📁 Server (`/server`)
+
+```text
+server/
+├── src/
+│   ├── data/             # Databasfiler och seed-skript (SQLite)
+│   ├── middlewares/      # Säkerhetsfilter (t.ex. JWT-verifiering)
+│   ├── routes/           # API-rutter (admin, auth, members, posts)
+│   ├── services/         # Affärslogik och databasanrop
+│   └── server.js         # Applikationens startpunkt
+├── .env                  # Miljövariabler
+└── package.json
+```
+
+---
+
 ## Funktionalitet
 
 ### Publik del (Klient)
@@ -19,8 +57,9 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 - **Start-/flödessida:** Visar publicerade tips och erbjudanden indelade i kategorier.
 - **Medlemsansökan:** Ett formulär där besökare kan ansöka om medlemskap (namn, e-post och GDPR-godkännande).
 - **GDPR-information:** Tydlig presentation av hur användarens data sparas och hanteras.
-  
+
 **Startsida (ljust och mörkt tema):**
+
 <table>
 <tr>
 <td><img width="400" alt="InfoFynd startsida - ljust tema" src="https://github.com/user-attachments/assets/c3453558-921a-41ab-9c82-a4caefab54c7" /></td>
@@ -38,6 +77,7 @@ Målet med projektet är att demonstrera en komplett CRUD-arkitektur, användarh
 - **Admin-konton (Super Admin):** Möjlighet för Super Admin att skapa, lista, avstänga/aktivera och radera andra administratörskonton.
 
 **Admin demo vy och superadmin vy**
+
 <table>
 <tr>
 <td><img width="400" alt="Admin demokonto vy" src="https://github.com/user-attachments/assets/943d2809-796e-40b5-8d38-59d33518126b" /></td>
@@ -111,4 +151,5 @@ Följ dessa steg för att köra projektet lokalt:
    ```
 
    ## Om projektet
-Detta är ett skolprojekt utvecklat som del av kursen JavaScript 2. Inte avsett för produktionsanvändning.
+
+   Detta är ett skolprojekt utvecklat som del av kursen JavaScript 2. Inte avsett för produktionsanvändning.
