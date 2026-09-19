@@ -4,7 +4,7 @@
 
 ## Sammanfattning & Syfte
 
-InfoFynd är en fullstack-webbapplikation byggd i React och Express med SQLite som databas[cite: 1]. Syftet med applikationen är att fungera som en samlingsplats för konsumenttips, erbjudanden och information, där besökare kan ta del av publicerat innehåll och ansöka om medlemskap.
+InfoFynd är en fullstack-webbapplikation byggd i React och Express med SQLite som databas. Syftet med applikationen är att fungera som en samlingsplats för konsumenttips, erbjudanden och information, där besökare kan ta del av publicerat innehåll och ansöka om medlemskap.
 
 Applikationen har en säker administrationsdel där administratörer har tillgång till fullständiga CRUD-operationer för medlemmar och inlägg. Systemet har dessutom stöd för rollbaserad behörighet där en **Super Admin** kan hantera övriga administratörskonton.
 
