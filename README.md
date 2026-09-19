@@ -112,43 +112,42 @@ server/
 Följ dessa steg för att köra projektet lokalt:
 
 1. **Klona eller ladda ner projektet.**
-2. **Starta servern:**
+
+2. **Konfigurera miljövariabler:**
+   - Skapa en `.env`-fil i `server`-mappen.
+   - Filen bör följa strukturen i `.env.example`:
+     ```env
+     PORT=3000
+     JWT_SECRET=din_hemliga_jwt_nyckel_här
+     ```
+
+3. **Starta servern:**
    - Navigera till servermappen:
-
-   ```
-   cd server
-   ```
-
+     ```bash
+     cd server
+     ```
    - Installera beroenden:
-
-   ```
-   npm install
-   ```
-
+     ```bash
+     npm install
+     ```
    - Starta servern:
+     ```bash
+     npm run dev
+     ```
 
-   ```
-   npm run dev
-   ```
-
-3. **Starta klienten:**
+4. **Starta klienten:**
    - Navigera till klientmappen:
-
-   ```
-   cd client
-   ```
-
+     ```bash
+     cd client
+     ```
    - Installera beroenden:
-
-   ```
-   npm install
-   ```
-
+     ```bash
+     npm install
+     ```
    - Starta klienten:
-
-   ```
-   npm run dev
-   ```
+     ```bash
+     npm run dev
+     ```
 
    ## Om projektet
 
